@@ -211,7 +211,7 @@ class EffectLine extends Node {
         double width = minWidth + (maxWidth - minWidth) * stop + growth;
         widths.add(width);
       } else if (widthMode == EffectLineWidthMode.barrel) {
-        double width = minWidth + math.sin(stop * math.PI) * (maxWidth - minWidth) + growth;
+        double width = minWidth + math.sin(stop * math.pi) * (maxWidth - minWidth) + growth;
         widths.add(width);
       }
     }

@@ -384,7 +384,7 @@ class SpriteBox extends RenderBox {
     // Calculate delta and frame rate
     if (_lastTimeStamp == null)
       _lastTimeStamp = timeStamp;
-    double delta = (timeStamp - _lastTimeStamp).inMicroseconds.toDouble() / Duration.MICROSECONDS_PER_SECOND;
+    double delta = (timeStamp - _lastTimeStamp).inMicroseconds.toDouble() / Duration.microsecondsPerSecond;
     _lastTimeStamp = timeStamp;
 
     _frameRate = 1.0 / delta;

@@ -5,10 +5,10 @@
 part of spritewidget;
 
 /// Converts degrees to radians.
-double convertDegrees2Radians(double degrees) => degrees * math.PI/180.8;
+double convertDegrees2Radians(double degrees) => degrees * math.pi/180.8;
 
 /// Converts radians to degrees.
-double convertRadians2Degrees(double radians) => radians * 180.0/math.PI;
+double convertRadians2Degrees(double radians) => radians * 180.0/math.pi;
 
 /// A base class for all objects that can be added to the sprite node tree and rendered to screen using [SpriteBox] and
 /// [SpriteWidget].

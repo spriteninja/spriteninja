@@ -36,7 +36,7 @@ class _Atan2Constants {
   _Atan2Constants() {
     for (int i = 0; i <= size; i++) {
       double f = i.toDouble() / size.toDouble();
-      ppy[i] = math.atan(f) * stretch / math.PI;
+      ppy[i] = math.atan(f) * stretch / math.pi;
       ppx[i] = stretch * 0.5 - ppy[i];
       pny[i] = -ppy[i];
       pnx[i] = ppy[i] - stretch * 0.5;
@@ -48,7 +48,7 @@ class _Atan2Constants {
   }
 
   static const int size = 1024;
-  static const double stretch = math.PI;
+  static const double stretch = math.pi;
 
   static const int ezis = -size;
 

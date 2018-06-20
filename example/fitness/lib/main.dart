@@ -255,7 +255,7 @@ class _WorkoutAnimationNode extends NodeWithSize {
 class _ProgressCircle extends NodeWithSize {
   _ProgressCircle(Size size, [this.value = 0.0]) : super(size);
 
-  static const double _kTwoPI = math.PI * 2.0;
+  static const double _kTwoPI = math.pi * 2.0;
   static const double _kEpsilon = .0000001;
   static const double _kSweep = _kTwoPI - _kEpsilon;
 
@@ -280,7 +280,7 @@ class _ProgressCircle extends NodeWithSize {
 
     double angle = value.clamp(0.0, 1.0) * _kSweep;
     Path path = new Path()
-      ..arcTo(Offset.zero & size, -math.PI / 2.0, angle, false);
+      ..arcTo(Offset.zero & size, -math.pi / 2.0, angle, false);
     canvas.drawPath(path, pathPaint);
   }
 }

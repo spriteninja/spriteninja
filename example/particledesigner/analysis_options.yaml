@@ -1,6 +1,8 @@
 # https://www.dartlang.org/guides/language/analysis-options
 analyzer:
   strong-mode: true
+  language:
+    enableSuperMixins: true
 
 # Source of linter options:
 # http://dart-lang.github.io/linter/lints/options/options.html

@@ -223,32 +223,34 @@ class _ColorSequenceDesignerState extends State<ColorSequenceDesigner> {
   void _pickColor(int stopNum) {
     showDialog(
       context: context,
-      builder: (BuildContext context) {
-        return new AlertDialog(
-          title: const Text('Color stop'),
-          content: new SingleChildScrollView(
-            child: new ColorPicker(
-              pickerColor: _colors[stopNum],
-              onColorChanged: (Color c) {
-                setState(() {
-                  _colors[stopNum] = c;
-                  _updateColorSequence();
-                });
-              },
-              enableLabel: false,
-              pickerAreaHeightPercent: 0.8,
+      child: new Builder(
+        builder: (BuildContext context) {
+          return new AlertDialog(
+            title: const Text('Color stop'),
+            content: new SingleChildScrollView(
+              child: new ColorPicker(
+                pickerColor: _colors[stopNum],
+                onColorChanged: (Color c) {
+                  setState(() {
+                    _colors[stopNum] = c;
+                    _updateColorSequence();
+                  });
+                },
+                enableLabel: false,
+                pickerAreaHeightPercent: 0.8,
+              ),
             ),
-          ),
-          actions: <Widget>[
-            new FlatButton(
-              child: new Text('DONE'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
+            actions: <Widget>[
+              new FlatButton(
+                child: new Text('DONE'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      )
     );
 
     _updateColorSequence();

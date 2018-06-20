@@ -650,27 +650,29 @@ class PropertyColor extends StatelessWidget {
   void _openColorPickerDialog(BuildContext context) {
     showDialog(
       context: context,
-      builder: (BuildContext context) {
-        return new AlertDialog(
-          title: const Text('Background color'),
-          content: new SingleChildScrollView(
-            child: new ColorPicker(
-              pickerColor: value,
-              onColorChanged: onUpdated,
-              enableLabel: false,
-              pickerAreaHeightPercent: 0.8,
+      child: new Builder(
+        builder: (BuildContext context) {
+          return new AlertDialog(
+            title: const Text('Background color'),
+            content: new SingleChildScrollView(
+              child: new ColorPicker(
+                pickerColor: value,
+                onColorChanged: onUpdated,
+                enableLabel: false,
+                pickerAreaHeightPercent: 0.8,
+              ),
             ),
-          ),
-          actions: <Widget>[
-            new FlatButton(
-              child: new Text('DONE'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      }
+            actions: <Widget>[
+              new FlatButton(
+                child: new Text('DONE'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        }
+      )
     );
   }
 }
@@ -715,28 +717,30 @@ class PropertyColorSequenceState extends State<PropertyColorSequence> {
   void _openColorSequenceDesignerDialog(BuildContext context) {
     showDialog(
       context: context,
-      builder: (BuildContext context) {
-        return new AlertDialog(
-          title: const Text('Color sequence'),
-          content: new SingleChildScrollView(
-            child: new ColorSequenceDesigner(
-              colorSequence: widget.value,
-              onChanged: (ColorSequence cs) {
-                _newColorSequence = cs;
-              },
+      child: new Builder(
+        builder: (BuildContext context) {
+          return new AlertDialog(
+            title: const Text('Color sequence'),
+            content: new SingleChildScrollView(
+              child: new ColorSequenceDesigner(
+                colorSequence: widget.value,
+                onChanged: (ColorSequence cs) {
+                  _newColorSequence = cs;
+                },
+              ),
             ),
-          ),
-          actions: <Widget>[
-            new FlatButton(
-              child: new Text('DONE'),
-              onPressed: () {
-                Navigator.of(context).pop();
-                widget.onUpdated(_newColorSequence);
-              },
-            ),
-          ],
-        );
-      }
+            actions: <Widget>[
+              new FlatButton(
+                child: new Text('DONE'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  widget.onUpdated(_newColorSequence);
+                },
+              ),
+            ],
+          );
+        }
+      )
     );
   }
 }
