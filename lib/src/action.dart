@@ -503,6 +503,7 @@ class ActionTween<T> extends ActionInterval {
 /// itself is typically a property of a [Node] and powered by the [SpriteBox].
 class ActionController {
 
+  bool _paused = false;
   List<Action> _actions = <Action>[];
 
   /// Creates a new [ActionController]. However, for most uses a reference to
@@ -561,9 +562,26 @@ class ActionController {
     }
   }
 
+  /// Pause actions currently being run by the controller
+  ///
+  ///     myNode.actions.pause();
+  void pause() {
+    _paused = true;
+  }
+
+  /// Unpause actions being run by the controller
+  ///
+  ///     myNode.actions.unpause();
+  void unpause() {
+    _paused = false;
+  }
+
   /// Steps the action forward by the specified time, typically there is no need
   /// to directly call this method.
   void step(double dt) {
+    if (_paused)
+      return;
+
     for (int i = _actions.length - 1; i >= 0; i--) {
       Action action = _actions[i];
       action.step(dt);
