@@ -9,3 +9,4 @@ pubspec.lock
 examples/fitness/ios/Flutter/flutter_assets
 example/fitness/ios/Flutter/flutter_assets/kernel_blob.bin
 example/fitness/ios/Flutter/flutter_assets/platform.dill
+examples/particledesigner/ios/Flutter/flutter_export_environment.sh

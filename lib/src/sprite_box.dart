@@ -369,6 +369,21 @@ class SpriteBox extends RenderBox {
 
   int _frameCallbackId;
 
+  bool _paused = false;
+
+  get paused => _paused;
+
+  set paused(bool value) {
+    if (!value && _paused) {
+      _scheduleTick();
+      markNeedsPaint();
+      print("Resume");
+    } else if(!value) {
+      print("Resume already resumed $value $_paused");
+    }
+    _paused = value;
+  }
+
   void _scheduleTick() {
     _frameCallbackId = SchedulerBinding.instance.scheduleFrameCallback(_tick);
   }
@@ -379,6 +394,9 @@ class SpriteBox extends RenderBox {
 
   void _tick(Duration timeStamp) {
     if (!attached)
+      return;
+
+    if (_paused)
       return;
 
     // Calculate delta and frame rate
