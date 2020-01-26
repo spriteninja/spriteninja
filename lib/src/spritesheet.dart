@@ -44,6 +44,25 @@ class SpriteSheet {
     }
   }
 
+  /// Creates a new sprite sheet from an [_image] and a libGDX sprite atlas [atlasDefinition] (https://github.com/libgdx/libgdx/wiki/Texture-packer).
+  ///
+  ///     var mySpriteSheet = new SpriteSheet.FromLibGDXSpriteAtlas(myImage, atlasString);
+  SpriteSheet.FromLibGDXSpriteAtlas(this._image, String atlasDefinition) {
+    var libGDXFrames = LibGDXLoader.parseFrames(atlasDefinition);
+
+    for(LibGDXFrame frameInfo in libGDXFrames) {
+      Rect frame = new Rect.fromLTWH(frameInfo.xy.dx, frameInfo.xy.dy, frameInfo.size.width, frameInfo.size.height);
+      bool rotated = frameInfo.rotate;
+      bool trimmed = true;
+      Rect spriteSourceSize = new Rect.fromLTWH(frameInfo.offset.dx, frameInfo.offset.dy, frameInfo.size.width, frameInfo.size.height);
+      Size sourceSize = frameInfo.orig;
+      Offset pivot = new Offset(0.5, 0.5);
+      SpriteTexture texture = new SpriteTexture._fromSpriteFrame(_image, frameInfo.name, sourceSize, rotated, trimmed, frame,
+          spriteSourceSize, pivot);
+      _textures[frameInfo.name] = texture;
+    }
+  }
+
   Rect _readJsonRect(Map<dynamic, dynamic> data) {
     num x = data["x"];
     num y = data["y"];

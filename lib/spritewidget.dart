@@ -40,3 +40,5 @@ part 'src/sprite_texture.dart';
 part 'src/textured_line.dart';
 part 'src/util.dart';
 part 'src/virtual_joystick.dart';
+part 'src/lib_gdx_frame.dart';
+part 'src/lib_gdx_loader.dart';
