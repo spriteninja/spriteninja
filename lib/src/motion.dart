@@ -26,6 +26,8 @@ abstract class Motion {
   Object _tag;
   bool _finished = false;
   bool _added = false;
+  Function _onComplete;
+  List<dynamic> _onCompleteArguments;
 
   /// Moves to the next time step in an motion, [dt] is the delta time since
   /// the last time step in seconds. Typically this method is called from the
@@ -517,9 +519,10 @@ class MotionController {
   /// to reference the motion or a set of motions with the same tag.
   ///
   ///     myNode.motions.run(myMotion, "myMotionGroup");
-  void run(Motion motion, [Object tag]) {
+  void run(Motion motion,{Function onComplete,List<dynamic> onCompleteArguments,Object tag}) {
     assert(!motion._added);
-
+    motion._onComplete = onComplete;
+    motion._onCompleteArguments = onCompleteArguments;
     motion._tag = tag;
     motion._added = true;
     motion.update(0.0);
@@ -573,8 +576,11 @@ class MotionController {
       motion.step(dt);
 
       if (motion._finished) {
+        if(motion._onComplete!=null){
+          Function.apply(motion._onComplete, motion._onCompleteArguments);
+        }
         motion._added = false;
-        _motions.removeAt(i);
+        _motions.removeAt(i);        
       }
     }
   }
