@@ -75,7 +75,7 @@ The `Image` class isn't automatically imported through flutter/material, so you 
 
     import 'dart:ui' as ui show Image;
 
- Now you can load images using the `ImageMap`. Note that the loading methods are asynchronous, so this example code will need to go in an asynch method. For a full example of loading images see the [Weather Demo](https://github.com/spritewidget/spritewidget/tree/master/example/weather).
+ Now you can load images using the `ImageMap`. Note that the loading methods are asynchronous, so this example code will need to go in an asynch method. For a full example of loading images see the [Weather Demo](https://github.com/spritewidget/spritewidget/tree/master/examples/weather).
 
     ImageMap images = new ImageMap(rootBundle);
 
